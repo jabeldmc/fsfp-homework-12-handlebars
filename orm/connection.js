@@ -38,6 +38,7 @@ const connect = function() {
                     if ( error ) {
                         reject( error );
                     }
+
                     console.info( `[INFO] Connected to database with thread ID ${connection.threadId}` );
                     resolve();
                 }
@@ -66,6 +67,7 @@ const disconnect = function() {
 
 const createSelectQueryFragment = function( fields ) {
     var queryFragment;
+
     if ( fields ) {
         queryFragment = `SELECT ${ fields.map( () => '??' ).join( ' , ' ) }`;
     }
@@ -81,9 +83,7 @@ const createSelectQueryFragment = function( fields ) {
 ***/
 
 const createFromQueryFragment = function() {
-    var queryFragment = 'FROM ??';
-
-    return queryFragment;
+    return 'FROM ??';
 }
 
 
@@ -92,6 +92,7 @@ const createFromQueryFragment = function() {
 
 const createWhereQueryFragment = function( filters ) {
     var queryFragment;
+
     if ( filters ) {
         queryFragment = `WHERE ${ Object.keys( filters ).map( () => '?? = ?' ).join( ' AND ' ) }`;
     }
@@ -107,9 +108,7 @@ const createWhereQueryFragment = function( filters ) {
 ***/
 
 const createUpdateQueryFragment = function() {
-    var queryFragment = 'UPDATE ??';
-
-    return queryFragment;
+    return 'UPDATE ??';
 }
 
 
@@ -117,10 +116,7 @@ const createUpdateQueryFragment = function() {
 ***/
 
 const createSetQueryFragment = function( newValues ) {
-    var queryFragment;
-    queryFragment = `SET ${ Object.keys( newValues ).map( () => '?? = ?' ).join( ' , ' ) }`;
-
-    return queryFragment;
+    return `SET ${ Object.keys( newValues ).map( () => '?? = ?' ).join( ' , ' ) }`;
 }
 
 
@@ -128,10 +124,7 @@ const createSetQueryFragment = function( newValues ) {
 ***/
 
 const createInsertQueryFragment = function( newValues ) {
-    var queryFragment;
-    queryFragment = `INSERT INTO ??( ${ Object.keys( newValues ).map( () => '??' ).join( ' , ' ) } )`;
-
-    return queryFragment;
+    return `INSERT INTO ??( ${ Object.keys( newValues ).map( () => '??' ).join( ' , ' ) } )`;
 }
 
 
@@ -139,10 +132,7 @@ const createInsertQueryFragment = function( newValues ) {
 ***/
 
 const createValuesQueryFragment = function( newValues ) {
-    var queryFragment;
-    queryFragment = `VALUES ( ${ Object.keys( newValues ).map( () => '?' ).join( ' , ' ) } )`;
-
-    return queryFragment;
+    return `VALUES ( ${ Object.keys( newValues ).map( () => '?' ).join( ' , ' ) } )`;
 }
 
 
@@ -271,7 +261,10 @@ const createSelectQuery = function( table , fields , filters ) {
     var fromQueryFragment = createFromQueryFragment();
     var whereQueryFragment = createWhereQueryFragment( filters );
     var queryValues = createSelectQueryValues( table , fields , filters );
-    var queryFormatString = [ selectQueryFragment , fromQueryFragment , whereQueryFragment ].join( ' ' ).trim().replace( / {2,}/g , ' ' );
+    var queryFormatString =
+        `${selectQueryFragment} ${fromQueryFragment} ${whereQueryFragment}`
+        .trim()
+        .replace( / {2,}/g , ' ' );
     var query = mysql.format(
         queryFormatString ,
         queryValues
@@ -324,7 +317,10 @@ const createUpdateQuery = function( table , newValues , filters ) {
     var setQueryFragment = createSetQueryFragment( newValues );
     var whereQueryFragment = createWhereQueryFragment( filters );
     var queryValues = createUpdateQueryValues( table , newValues , filters );
-    var queryFormatString = [ updateQueryFragment , setQueryFragment , whereQueryFragment ].join( ' ' ).trim().replace( / {2,}/g , ' ' );
+    var queryFormatString =
+        `${updateQueryFragment} ${setQueryFragment} ${whereQueryFragment}`
+        .trim()
+        .replace( / {2,}/g , ' ' );
     var query = mysql.format(
         queryFormatString ,
         queryValues
@@ -372,7 +368,10 @@ const createInsertQuery = function( table , newValues ) {
     var insertQueryFragment = createInsertQueryFragment( newValues );
     var valuesQueryFragment = createValuesQueryFragment( newValues );
     var queryValues = createInsertQueryValues( table , newValues );
-    var queryFormatString = [ insertQueryFragment , valuesQueryFragment ].join( ' ' ).trim().replace( / {2,}/g , ' ' );
+    var queryFormatString =
+        `${insertQueryFragment} ${valuesQueryFragment}`
+        .trim()
+        .replace( / {2,}/g , ' ' );
     var query = mysql.format(
         queryFormatString ,
         queryValues
@@ -393,9 +392,9 @@ const runQuery = function( query ) {
                 query ,
                 ( error , result , fields ) => {
                     var queryResult = {
-                        error : error ,
+                        fields : fields ,
                         result : result ,
-                        fields : fields
+                        error : error
                     };
                     resolve( queryResult );
                 }

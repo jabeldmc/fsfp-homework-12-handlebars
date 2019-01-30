@@ -108,7 +108,6 @@ const insert = async function( table , newValues ) {
     }
 
     var query = connection.createInsertQuery( table , newValues );
-    // var query = 'INSERT INTO burger SET `burger_name` = `test_01` , `is_devoured` = `false` )';
     var result = await connection.runQuery( query );
     return result;
 }
