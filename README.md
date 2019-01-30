@@ -7,7 +7,7 @@ Full Stack Flex Program Homework 12: Handlebars
 
 ## Build 4
 
-* Initial view.
+* Initial model.
 * Initial controller.
 * Initial server.
 
