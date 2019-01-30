@@ -13,16 +13,17 @@ if ( process.env.JAWSDB_URL ) {
     config = process.env.JAWSDB_URL;
 }
 else {
-    config = require( '../config/connection.json' );
+    config = require( '../config' );
 }
-console.info( '[INFO] database connection config:' , config );
+console.group( '[DEBUG] config :' ); console.debug( config ); console.groupEnd();
+
 
 
 /*** FUNCTION initialize()
 ***/
 
 const initialize = function() {
-    connection = mysql.createConnection( config );
+    connection = mysql.createConnection( config.connection );
 }
 
 

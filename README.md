@@ -5,6 +5,12 @@ Full Stack Flex Program Homework 12: Handlebars
 
 # History
 
+## Build 4
+
+* Initial view.
+* Initial controller.
+* Initial server.
+
 ## Build 3
 
 * Complete orm module.
