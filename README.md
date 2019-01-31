@@ -5,6 +5,10 @@ Full Stack Flex Program Homework 12: Handlebars
 
 # History
 
+## Build 7
+
+* Deploy in Heroku.
+
 ## Build 6
 
 * Complete view, static.
