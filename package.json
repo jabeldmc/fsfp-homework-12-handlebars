@@ -1,0 +1,30 @@
+{
+  "name": "fsfp-homework-12-handlebars",
+  "version": "1.0.0",
+  "description": "Full Stack Flex Program Homework 12: Handlebars",
+  "main": "server.js",
+  "scripts": {
+    "develop": "nodemon server.js" ,
+    "develop-seed-database":
+      "mysql --host=localhost --user=root --password=gaogaofire --execute=\"source database/schema.sql\" && mysql --host=localhost --user=root --password=gaogaofire --execute=\"source database/seed-data.sql\" && echo \"Script \\\"develop-database\\\" completed.\"" ,
+    "test": "echo \"Error: no test specified\" && exit 1" ,
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabeldmc/fsfp-homework-12-handlebars.git"
+  },
+  "author": "jabeldmc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jabeldmc/fsfp-homework-12-handlebars/issues"
+  },
+  "homepage": "https://github.com/jabeldmc/fsfp-homework-12-handlebars#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.18.9"
+  }
+}

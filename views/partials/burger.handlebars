@@ -1,0 +1,11 @@
+<!-- views/partials/burger.handlebars
+-->
+
+<li class="list-group-item">
+    <div class="d-flex flex-row">
+        <p class="flex-grow-1 align-self-center mb-0">{{burger_name}}</p>
+        {{#unless is_devoured}}
+        <button type="button" class="devour-button btn btn-primary" data-burger-id="{{id}}">Devour!</button>
+        {{/unless}}
+    </div>
+</li>
