@@ -5,6 +5,13 @@ Full Stack Flex Program Homework 12: Handlebars
 
 # History
 
+## Build 5
+
+* Complete model.
+* Complete controller.
+* Complete server.
+* Initial view.
+
 ## Build 4
 
 * Initial model.

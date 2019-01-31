@@ -11,7 +11,7 @@ console.groupEnd();
 // require
 const express = require( 'express' );
 const bodyParser = require( 'body-parser' );
-// const handlebars = require( 'express-handlebars' );
+const handlebars = require( 'express-handlebars' );
 const orm = require( './orm' );
 
 
@@ -36,8 +36,8 @@ const initialize = function() {
     app.use( express.static( 'static' ) );
 
     // render engine
-    // app.engine( 'handlebars' , handlebars( { defaultLayout : 'main' } ) );
-    // app.set( 'view engine' , 'handlebars' );
+    app.engine( 'handlebars' , handlebars( { defaultLayout : 'main' } ) );
+    app.set( 'view engine' , 'handlebars' );
 
     // routes
     var routers = require( './controller' );

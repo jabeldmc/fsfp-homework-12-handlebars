@@ -23,7 +23,36 @@ const getAll = async function() {
 }
 
 
+/*** FUNCTION create
+***/
+
+const create = async function( newValues ) {
+    var result = await orm.insert(
+        'burger' ,
+        newValues
+    );
+
+    return result;
+}
+
+
+/*** FUNCTION setDevoured
+***/
+
+const setDevoured = async function( id ) {
+    var result = await orm.update(
+        'burger' ,
+        { is_devoured : true } ,
+        { id : id }
+    );
+
+    return result;
+}
+
+
 // export
 module.exports = {
-    getAll : getAll
+    getAll : getAll ,
+    create : create ,
+    setDevoured : setDevoured
 }

@@ -1,0 +1,17 @@
+<li class="list-group-item">
+    <div class="d-flex flex-row">
+        <p class="flex-grow-1 align-self-center mb-0">{{burger_name}}</p>
+        {{#unless is_devoured}}
+        <button type="button" class="btn btn-primary">Devour!</button>
+        {{/unless}}
+    </div>
+    <!--
+    <p class="mb-0">
+        {<br>
+        id : {{id}} ,<br>
+        burger_name : {{burger_name}} ,<br>
+        is_devoured : {{is_devoured}}<br>
+        }
+    </p>
+    -->
+</li>

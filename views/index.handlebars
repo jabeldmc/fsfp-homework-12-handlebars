@@ -1,0 +1,90 @@
+<!-- views/test.handlebars
+-->
+
+<!-- Container: Body -->
+<div id="body" class="container-fluid">
+
+
+    <!-- Row 1: Title -->
+    <div class="row mr-0">
+
+        <!-- Column 1 -->
+        <div class="col-12 pr-0">
+
+            <!-- Jumbotron -->
+            <div class="jumbotron py-4 mt-3 mb-3 text-center">
+                <h1 class="display-4">Burger Time!</h1>
+             </div>
+            <!-- Jumbotron -->
+
+        </div>
+        <!-- Column 1 -->
+
+    </div>
+    <!-- Row 1: Title -->
+
+
+    <!-- Row 2 -->
+    <div class="row mr-0">
+
+        <!-- Column 1 -->
+        <div class="col-6 pr-0">
+
+            <!-- Card --->
+            <div class="card flex-fill mb-3">
+                <h5 class="card-header">
+                    Available
+                </h5>
+                <div class="card-body">
+
+                    <!-- Form -->
+                    <form id="create-burger-form" class="form-inline">
+                        <div class="form-group mr-2">
+                            <label for="create-burger-form-burger-name" class="flex-grow-1 mr-2">Burger Name:</label>
+                            <input id="create-burger-form-burger-name" name="burger-name" type="text" placeholder="Required" class="form-control" required>
+                        </div>
+                        <button id="create-burger-form-submit" type="submit" class="btn btn-primary">Create!</button>
+                    </form>
+                    <!-- Form -->
+
+                </div>
+                <ul class="list-group list-group-flush">
+                    {{#each burgers}}
+                        {{#unless is_devoured}}
+                            {{> burger}}
+                        {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+            <!-- Card --->
+
+        </div>
+        <!-- Column 1 -->
+
+        <!-- Column 2 -->
+        <div class="col-6 pr-0">
+
+            <!-- Card --->
+            <div class="card flex-fill mb-3">
+                <h5 class="card-header">
+                    Devoured
+                </h5>
+                <ul class="list-group list-group-flush">
+                    {{#each burgers}}
+                        {{#if is_devoured}}
+                            {{> burger}}
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+            <!-- Card --->
+
+        </div>
+        <!-- Column 2 -->
+
+    </div>
+    <!-- Row 2 -->
+
+
+</div>
+<!-- Container: Body -->
