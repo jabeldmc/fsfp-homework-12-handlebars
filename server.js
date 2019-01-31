@@ -5,6 +5,7 @@
 // check environment variables
 console.group( '# Environment Variables' );
 console.group( '[DEBUG] process.env.PORT :' ); console.debug( process.env.PORT ); console.groupEnd();
+console.group( '[DEBUG] process.env.JAWSDB_URL :' ); console.debug( process.env.JAWSDB_URL ); console.groupEnd();
 console.groupEnd();
 
 
