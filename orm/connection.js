@@ -4,19 +4,11 @@
 
 // require
 const mysql = require( 'mysql' );
-
+const config = require( '../config' );
+console.group( '[DEBUG] config :' ); console.debug( config ); console.groupEnd();
 
 // global variables
 var connection;
-var config;
-if ( process.env.JAWSDB_URL ) {
-    config = process.env.JAWSDB_URL;
-}
-else {
-    config = require( '../config' );
-}
-console.group( '[DEBUG] config :' ); console.debug( config ); console.groupEnd();
-
 
 
 /*** FUNCTION initialize()
