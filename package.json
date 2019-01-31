@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "develop": "nodemon server.js" ,
-    "develop-database":
+    "develop-seed-database":
       "mysql --host=localhost --user=root --password=gaogaofire --execute=\"source database/schema.sql\" && mysql --host=localhost --user=root --password=gaogaofire --execute=\"source database/seed-data.sql\" && echo \"Script \\\"develop-database\\\" completed.\"" ,
     "test": "echo \"Error: no test specified\" && exit 1" ,
     "start": "node server.js"

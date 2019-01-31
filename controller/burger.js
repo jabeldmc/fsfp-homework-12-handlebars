@@ -86,7 +86,7 @@ Create new burger
 router.post(
     '/api/burger/create' ,
     async ( request , response ) => {
-        console.group( `# GET '/api/burger/create'` );
+        console.group( `# POST '/api/burger/create'` );
         console.group( '[DEBUG] request.url :' ); console.debug( request.originalUrl ); console.groupEnd();
         console.group( '[DEBUG] request.originalUrl :' ); console.debug( request.originalUrl ); console.groupEnd();
         console.group( '[DEBUG] request.method :' ); console.debug( request.method ); console.groupEnd();
@@ -94,8 +94,8 @@ router.post(
         console.group( '[DEBUG] request.query :' ); console.debug( request.query ); console.groupEnd();
         console.group( '[DEBUG] request.body :' ); console.debug( request.body ); console.groupEnd();
 
-        var newValues = request.body;
-        var result = await model.burger.create( newValues );
+        var burgerData = request.body;
+        var result = await model.burger.create( burgerData );
 
         if( result.error ) {
             response.json( result.error );
@@ -128,8 +128,8 @@ router.put(
         console.group( '[DEBUG] request.query :' ); console.debug( request.query ); console.groupEnd();
         console.group( '[DEBUG] request.body :' ); console.debug( request.body ); console.groupEnd();
 
-        var id = request.query.id;
-        var result = await model.burger.setDevoured( id );
+        var burgerId = request.body.id;
+        var result = await model.burger.setDevoured( burgerId );
 
         if( result.error ) {
             response.json( result.error );

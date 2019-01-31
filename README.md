@@ -5,6 +5,11 @@ Full Stack Flex Program Homework 12: Handlebars
 
 # History
 
+## Build 6
+
+* Complete view, static.
+* Complete minimum requirements.
+
 ## Build 5
 
 * Complete model.
